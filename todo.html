@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      .todo-container {
+        width: 500px;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      #todo-form {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+      }
+
+      #todo-input {
+        width: 60%;
+        padding: 10px;
+        border: none;
+        border-radius: 25px;
+        outline: none;
+      }
+
+      button[type="submit"] {
+        width: 20%;
+        padding: 10px;
+        border: none;
+        border-radius: 25px;
+        background-color: #3f51b5;
+        color: #fff;
+        cursor: pointer;
+      }
+
+      #todo-list {
+        list-style: none;
+        padding: 0;
+      }
+
+      .todo-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        border-radius: 25px;
+        margin-bottom: 10px;
+        background-color: #eee;
+      }
+
+      .todo-item input[type="checkbox"] {
+        margin-right: 10px;
+      }
+
+      .todo-item span {
+        text-decoration: none;
+        transition: all 0.3s;
+      }
+
+      .todo-item input[type="checkbox"]:checked + span {
+        text-decoration: line-through;
+      }
+
+      .todo-item button {
+        background-color: #ff5722;
+        color: #fff;
+        border: none;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        font-weight: bold;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="todo-container">
+      <form id="todo-form">
+        <input type="text" id="todo-input" placeholder="Enter a task">
+        <button type="submit">Add Task</button>
+      </form>
+      <ul id="todo-list"></ul>
+    </div>
+
+    <script>
+      const form = document.querySelector("#todo-form");
+      const input = document.querySelector("#todo-input");
+      const list = document.querySelector("#todo-list");
+
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        const value = input.value;
+
+        if (!value) return;
+
+        const item = document.createElement("li");
+        item.classList.add("todo-item");
+        item.innerHTML = `
+          <input type="checkbox">
+          <span>${value}</span>
+          <button>&times;</button>
+           `;
+          list.appendChild(item);
+          input.value = "";
+
+          const checkbox = item.querySelector("input[type='checkbox']");
+          const span = item.querySelector("span");
+          const deleteBtn = item.querySelector("button");
+
+          checkbox.addEventListener("click", () => {
+          span.style.textDecoration = checkbox.checked ? "line-through" : "none";
+        });
+
+          deleteBtn.addEventListener("click", () => {
+          item.remove();
+        });
+      });
+    </script>
+  </body>
+</html>
