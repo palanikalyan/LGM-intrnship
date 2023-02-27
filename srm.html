@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Student Result Management System</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Student Result Management System</h1>
+  <div class="container">
+    <form>
+      <h2>Enter Student Details:</h2>
+      <input type="text" id="name" placeholder="Name"><br>
+      <input type="number" id="rollno" placeholder="Roll No."><br>
+      <input type="text" id="subject" placeholder="Subject"><br>
+      <input type="number" id="marks" placeholder="Marks"><br>
+      <button type="button" onclick="addData()">Add Data</button>
+    </form>
+    <table id="table">
+      <tr>
+        <th>Name</th>
+        <th>Roll No.</th>
+        <th>Subject</th>
+        <th>Marks</th>
+        <th>Action</th>
+      </tr>
+    </table>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
